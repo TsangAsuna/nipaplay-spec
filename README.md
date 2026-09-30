@@ -12,19 +12,30 @@ older than the required baseline `b098594d`).
 
 ## What the workflow does
 
+The workflow is divided: **one trigger completes exactly one major item** —
+one section of the spec — then the run ends.
+
 1. **Gate** — `git merge-base --is-ancestor b098594d HEAD` against the
    NipaPlay-Reload repository. If HEAD does not contain `b098594d`, nothing is
    generated. This guarantees the spec content is never older than that commit.
-2. **Draft** — one subagent writes `spec.md` into this folder: a compact,
-   evidence-backed feature listing of NipaPlay-Reload (player kernels, decoder
-   options, danmaku engines, subtitles, media library, downloads, remote
-   playback, platforms), each bullet naming its implementing path.
-3. **Verify** — an independent subagent cross-checks every claim in `spec.md`
-   against the repository; problems are fixed in place before the spec is
-   published as the run's artifact.
+2. **Pick the one major item** — the first section in the fixed 16-item list
+   that is missing from `spec.md` or whose provenance marker
+   (`*Verified against the tree at `<hash>`.*` under the heading) does not
+   match the current HEAD short hash. If every section is fresh, the run
+   reports the spec complete and stops without work.
+3. **Draft** — one subagent regenerates only that section from the current
+   tree, stamping its provenance marker.
+4. **Verify** — an independent subagent cross-checks every claim in the
+   section (including cited line ranges) against the repository; findings are
+   fixed in place before anything is recorded.
+5. **Checkpoint** — the verified section is committed to this repository, and
+   the run ends.
 
-The workflow never edits NipaPlay-Reload itself; it reads the tree and writes
-only `spec.md` here.
+Trigger repeatedly to walk through all 16 items; each run is short and ends at
+a committed milestone. A section's marker makes staleness visible: after
+NipaPlay-Reload advances, the next triggers refresh sections one at a time
+against the new HEAD. To force a full rebuild, delete `spec.md` and commit the
+deletion. The workflow never edits NipaPlay-Reload itself.
 
 ## Targets
 
