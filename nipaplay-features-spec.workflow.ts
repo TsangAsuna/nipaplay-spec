@@ -1,5 +1,5 @@
 // Workflow: nipaplay-features-spec (divided — one major item per run)
-// Rev 2: same logic; re-submitted to retry a transient provider failure.
+// Rev 3: same logic; re-submitted after transient provider failures.
 //
 // Each trigger completes exactly ONE major item: the first spec section that
 // is missing from spec.md or whose provenance marker predates the current
