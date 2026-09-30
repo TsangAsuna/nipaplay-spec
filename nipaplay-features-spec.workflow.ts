@@ -130,7 +130,7 @@ for (let round = 0; round < ITEMS.length; round++) {
   }
   log(`Section ${round + 1}: "${target.heading}" — drafting.`);
 
-  phase(`Draft "${target.heading}"`);
+  phase("Draft the next stale section");
   const sectionText = await writer.ask<string>(
     `Work on ${OUTPUT_DIR}/spec.md. Target section: "## ${target.heading}". Scope: ${target.brief}. ` +
     `Everything must be derived from the NipaPlay-Reload repository at ${REPO_PATH}, as of commit ${headShort}, ` +
@@ -142,7 +142,7 @@ for (let round = 0; round < ITEMS.length; round++) {
     `Write the file, then return the FULL text of the regenerated section as your final answer and nothing else.`,
   );
 
-  phase(`Verify "${target.heading}", then checkpoint`);
+  phase("Verify the section, then checkpoint");
   const issues = await verifier.ask<SpecIssue[]>(
     `Read ${OUTPUT_DIR}/spec.md and locate the "## ${target.heading}" section. Verify its feature claims against ` +
     `the NipaPlay-Reload repository at ${REPO_PATH} (the section names paths — read them, and check cited line ranges). ` +
