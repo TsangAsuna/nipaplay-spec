@@ -1,10 +1,10 @@
 # NipaPlay-Reload — Feature Spec
 
-Feature listing of the NipaPlay-Reload repository as of commit `b098594d` (verified HEAD of branch `nipaplay` via `git rev-parse HEAD` → `b098594d57e0d16b3768ee0c85e5aa8b477a39d3`), derived from that tree: `README.md`, `CONTRIBUTING_GUIDE/`, `Documentation/`, `docs/`, `lib/`, `rust/`, platform projects, and recent commit subjects. Every feature names its implementing path.
+Feature listing of the NipaPlay-Reload repository as of commit `bdd02e43` (verified HEAD of branch `nipaplay` via `git rev-parse HEAD` → `bdd02e43fffcca914ebd0bfa411c25731386aa0d`), derived from that tree: `README.md`, `CONTRIBUTING_GUIDE/`, `Documentation/`, `docs/`, `lib/`, `rust/`, platform projects, and recent commit subjects. Every feature names its implementing path.
 
 ## Overview
 
-*Verified against the tree at `b098594d`.*
+*Verified against the tree at `bdd02e43`.*
 
 - Positioning: a modern cross-platform video player framed as a personal anime media center, with headline highlights of whole-platform parity, automatic dandanplay danmaku, Emby/Jellyfin/SMB/WebDAV library integration, Bangumi tracking, and a modern light/dark UI — `README.md:25-44`.
 - Platform support: Windows, macOS, Linux, Android and iOS are shipped download targets; tvOS and HarmonyOS are available as builds, with per-platform kernel/HDR caveats in the capability matrix — `README.md:28,92`, `Documentation/platform-matrix.md:5-14`.
@@ -18,7 +18,7 @@ Feature listing of the NipaPlay-Reload repository as of commit `b098594d` (verif
 - Shipped roadmap — built-in downloader and remote control: `lib/services/torrent_download_service.dart` with the `lib/downloads/` UI, and the remote-control API `lib/services/remote_control_api_service.dart`.
 - Shipped roadmap — online URL playback: paste-and-play http/https direct links in the unified playback entry — `lib/playback/unified_playback_entry_model.dart:43-49`, `lib/playback/adaptive_playback_entry_view.dart`.
 - Shipped roadmap — macOS HDR (Erika native EDR + Media Kit): experimental native-video output toggle (`lib/settings/pages/player_settings_content.dart:106-116` → `lib/player_abstraction/player_factory.dart:313`), Media Kit platform-HDR validation path, and screen-EDR probe overlay — `lib/player_abstraction/media_kit_player_adapter.dart:69-129`, `lib/themes/nipaplay/widgets/macos_hdr_probe_overlay.dart:135-141`.
-- Shipped roadmap — Apple TV (tvOS) developer preview: `tvos/` host project with the dedicated tvOS Flutter SDK guide — `docs/TVOS_DEVELOPMENT.md`.
+- Shipped roadmap — Apple TV (tvOS) developer preview: `tvos/` host project with the dedicated tvOS Flutter SDK guide — `docs/TVOS_DEVELOPMENT.md`; repo CI builds a signed iOS IPA with App Store Connect upload disabled in this fork — `.github/workflows/main.yml:66-76,429-433` (commit `bdd02e43`).
 
 ## Player kernels
 
