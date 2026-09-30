@@ -1,11 +1,24 @@
-# NipaPlay-Reload — Feature Specification
+# NipaPlay-Reload — Feature Spec
 
 Feature listing of the NipaPlay-Reload repository as of commit `b098594d` (verified HEAD of branch `nipaplay` via `git rev-parse HEAD` → `b098594d57e0d16b3768ee0c85e5aa8b477a39d3`), derived from that tree: `README.md`, `CONTRIBUTING_GUIDE/`, `Documentation/`, `docs/`, `lib/`, `rust/`, platform projects, and recent commit subjects. Every feature names its implementing path.
 
 ## Overview
 
-- Cross-platform anime video player ("personal media center") built on Flutter with a Rust+Dart hybrid core, supporting Windows, macOS, Linux, Android, iOS plus tvOS and HarmonyOS builds — `README.md:24-44,187-200`.
-- Shipped roadmap items: GIF clip export, built-in downloader + remote control, macOS HDR (Erika EDR native + Media Kit), Apple TV (tvOS) developer preview — `README.md:202-214`.
+*Verified against the tree at `b098594d`.*
+
+- Positioning: a modern cross-platform video player framed as a personal anime media center, with headline highlights of whole-platform parity, automatic dandanplay danmaku, Emby/Jellyfin/SMB/WebDAV library integration, Bangumi tracking, and a modern light/dark UI — `README.md:25-44`.
+- Platform support: Windows, macOS, Linux, Android and iOS are shipped download targets; tvOS and HarmonyOS are available as builds, with per-platform kernel/HDR caveats in the capability matrix — `README.md:28,92`, `Documentation/platform-matrix.md:5-14`.
+- Platform host trees in-repo: `android/`, `ios/`, `linux/`, `macos/`, `windows/`, `web/`, `tvos/`, `ohos/` (HarmonyOS) plus `harmonyos_test/`; tvOS build guide with its dedicated Flutter fork — `docs/TVOS_DEVELOPMENT.md`.
+- Distribution channels: GitHub Releases, App Store, Microsoft Store, Spark Store, Homebrew cask, AUR binary/source packages, Gentoo ebuild — `README.md:90-145`.
+- Tech stack: Flutter/Dart app `nipaplay` 1.11.9 (Dart SDK ^3.5.3) — `pubspec.yaml:1,19-22`; pluggable playback engines Erika (self-developed Rust kernel, `erika_flutter` 0.2.0), FVP (MDK), Media Kit (libmpv backend) and Video Player behind `lib/player_abstraction/` — `pubspec.yaml:83,123,129-135`, `Documentation/player-kernels.md:3-12`, `README.md:187-200`.
+- Rust+Dart hybrid architecture: native Rust crate under `rust/` bridged via flutter_rust_bridge 2.12.0 through the `rust_builder` plugin — `pubspec.yaml:165-167`, `flutter_rust_bridge.yaml`, `rust/Cargo.toml`, `README.md:177-178`.
+- Supporting stack: Provider state management, SQLite (`sqflite`/`sqflite_common_ffi`) + SharedPreferences storage, Dio/Http networking, JS plugin runtime (`flutter_js`), in-repo forked components wired through dependency overrides — `pubspec.yaml:50,58,84-85,116-122,170,302-335`.
+- Shipped roadmap — Bangumi comment sections: `lib/themes/nipaplay/widgets/bangumi_comments_widget.dart`, `lib/themes/nipaplay/widgets/bangumi_comment_dialog.dart`, `lib/models/bangumi_comment_model.dart`, embedded in `lib/pages/anime_detail_page.dart:26,51`.
+- Shipped roadmap — GIF clip export: `lib/player_abstraction/erika_gif_export.dart` (+ `_io`/`_stub`), surfaced via `GifExportRequest` in `lib/themes/nipaplay/widgets/media_capture_dialog.dart:293`.
+- Shipped roadmap — built-in downloader and remote control: `lib/services/torrent_download_service.dart` with the `lib/downloads/` UI, and the remote-control API `lib/services/remote_control_api_service.dart`.
+- Shipped roadmap — online URL playback: paste-and-play http/https direct links in the unified playback entry — `lib/playback/unified_playback_entry_model.dart:43-49`, `lib/playback/adaptive_playback_entry_view.dart`.
+- Shipped roadmap — macOS HDR (Erika native EDR + Media Kit): experimental native-video output toggle (`lib/settings/pages/player_settings_content.dart:106-116` → `lib/player_abstraction/player_factory.dart:313`), Media Kit platform-HDR validation path, and screen-EDR probe overlay — `lib/player_abstraction/media_kit_player_adapter.dart:69-129`, `lib/themes/nipaplay/widgets/macos_hdr_probe_overlay.dart:135-141`.
+- Shipped roadmap — Apple TV (tvOS) developer preview: `tvos/` host project with the dedicated tvOS Flutter SDK guide — `docs/TVOS_DEVELOPMENT.md`.
 
 ## Player Kernels
 
