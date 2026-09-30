@@ -119,7 +119,7 @@ const sectionText = await writer.ask<string>(
 );
 
 phase("Verify the section, then checkpoint");
-const verifier = agent("section verifier", {
+const issues = await agent("section verifier", {
   system:
     "You check one written spec section against the code it describes. Read the section, then check its " +
     "claims against the repository files it names — including that cited line numbers point at the claimed " +
