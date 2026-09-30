@@ -39,6 +39,8 @@ deletion. The workflow never edits NipaPlay-Reload itself.
 
 ## Targets
 
-- Source repository: `F:\Hermes Agent CN Desktop Portable\data\hermes-home\NipaPlay-Reload`
+- Source repository: `F:\Hermes Agent CN Desktop Portable\data\hermes-home\NipaPlay-Reload-features`
+  (GitHub: [TsangAsuna/NipaPlay-Reload-features](https://github.com/TsangAsuna/NipaPlay-Reload-features),
+  branch `nipaplay` — the working repo where feature development happens)
 - Baseline commit: `b098594d` ("fix(subtitles): stacking a kernel-track subtitle must not steal playback")
 - Output: `spec.md` in this folder

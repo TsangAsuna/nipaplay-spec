@@ -28,7 +28,7 @@ interface WorkflowReport {
 }
 
 const BASE_COMMIT = "b098594d";
-const REPO_PATH = "F:/Hermes Agent CN Desktop Portable/data/hermes-home/NipaPlay-Reload";
+const REPO_PATH = "F:/Hermes Agent CN Desktop Portable/data/hermes-home/NipaPlay-Reload-features";
 const OUTPUT_DIR = "F:/Hermes Agent CN Desktop Portable/data/hermes-home/NipaPlay-Reload-workflow";
 
 interface SpecItem {
