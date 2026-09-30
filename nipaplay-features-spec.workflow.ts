@@ -1,5 +1,7 @@
 // Workflow: nipaplay-features-spec (divided — one major item per run)
 // Rev 3: same logic; re-submitted after transient provider failures.
+// Rev 4: unchanged logic; amend-retry after provider "Model creation failed".
+// Rev 5: unchanged logic; provider burst retry.
 //
 // Each trigger completes exactly ONE major item: the first spec section that
 // is missing from spec.md or whose provenance marker predates the current
