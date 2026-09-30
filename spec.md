@@ -310,7 +310,7 @@ Feature listing of the NipaPlay-Reload repository as of commit `e796d0a5` (verif
 
 ## Playback experience
 
-*Verified against the tree at `b098594d`.*
+*Verified against the tree at `e796d0a5`.*
 
 - Intro/credits skip model and merge policy: per-kind (opening/ending) skip-segment slots merged by source credibility rank (manual 100 > mediaServer 40 > AniSkip 30 > danmaku 20 > chapter heuristic 10), a single `activeSkipSegment` getter drives the skip button, `skipCurrentSegment` jumps to the segment end clamped inside the media duration to avoid EOF error storms, and the master toggle persists under SharedPreferences — `lib/services/intro_skip/skip_segment.dart:2-46`, `lib/utils/video_player_state/video_player_state_intro_skip.dart:57,77,183,224`.
 - AniSkip community segments: singleton client for `api.aniskip.com/v2/skip-times` accepting only `op`/`ed` (mixed-op/mixed-ed/recap deliberately not adopted so skipping never loses content), 8 s timeout, in-flight request merging and a 256-entry memory cache where failures are never cached; the MAL-ID chain goes dandanplay details → Bangumi subject (original title + premiere year) → AniList GraphQL `idMal` with Chinese-season search variants and a ±1-year cross-check — `lib/services/intro_skip/aniskip_service.dart:15-24,42-64,79`, `lib/utils/video_player_state/video_player_state_intro_skip.dart:279-411`, `lib/services/intro_skip/skip_id_resolver.dart:70-90,99,180-210,312-323`.
